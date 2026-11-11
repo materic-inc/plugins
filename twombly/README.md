@@ -27,7 +27,7 @@ codex plugin add twombly@materic
 
 Then restart the ChatGPT app and open Plugins → Twombly.
 
-In Cursor, follow the [current setup guide](https://raw.githubusercontent.com/materic-inc/plugins/main/SETUP.md). It covers installing the full plugin locally while the official listing is unavailable.
+In Cursor, follow the [current setup guide](https://twombly.app/install). It covers installing the full plugin locally while the official listing is unavailable.
 
 Try: “Put our signup flow on Twombly so I can review every step side by side.”
 
