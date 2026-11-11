@@ -4,7 +4,7 @@ Work in the person's current project. Use the host you're running in. The presen
 
 1. Look for Twombly’s native tools. Claude Code may need a tool search for “twombly”. If you have open_canvas and add_frames, read the guide, open a single canvas and use the tools to add the main screens. You can skip installation.
 2. Otherwise install the full plugin for this host using its section below. It includes the Twombly skill, local tools, comment hooks and artwork. Use Node.js 22 or later. Explain any permission prompt or restart the person needs to complete. If a step fails, say which one and why.
-3. Use the native tools to open the canvas and add the screens. If the host only loads plugins at session start, tell the person the reload action and give them this continuation: “Open Twombly and put this project's main screens side by side.” Check the frames and return the canvas address.
+3. Use the native tools to open the canvas and add the screens. If the host only loads plugins at session start, stop after verifying installation. Leave canvas creation for the reloaded session. Tell the person the reload action and give them this continuation: “Open Twombly and put this project's main screens side by side.” Check the frames and return the canvas address.
 
 Keep the published runtime pin and files intact if a download fails. Only describe a canvas as online when the tool returns its hosted link.
 
