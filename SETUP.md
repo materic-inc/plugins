@@ -6,6 +6,8 @@ Work in the person's current project. Use the host you're running in. The presen
 2. Otherwise install the full plugin for this host using its section below. It includes the Twombly skill, local tools, comment hooks and artwork. Use Node.js 22 or later. Explain any permission prompt or restart the person needs to complete. If a step fails, say which one and why.
 3. Continue in this conversation. If the new tools are available, use them. While a reload or user action is pending, run `npx -y twombly@latest guide` and follow it to put the actual screens on a canvas. Verify the frames, return their canvas address and distinguish a working canvas from a verified native installation.
 
+Install the published files unchanged. If the pinned runtime download fails, keep the original manifest, hooks and version pin. Retry the published version or give the person the exact retry step. A CLI fallback can create a canvas while native setup is pending. Only describe a canvas as online when the tool returns its hosted link.
+
 Current Twombly canvases are uploaded privately as they're created, including before sign-in. Add only static frame output safe to leave the machine. Leave link sharing off unless requested.
 
 ## Claude Code
