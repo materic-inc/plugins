@@ -4,9 +4,9 @@ Work in the person's current project. Use the host you're running in. The presen
 
 1. Look for Twombly’s native tools. Claude Code may need a tool search for “twombly”. If you have open_canvas and add_frames, read the guide, open a single canvas and use the tools to add the main screens. You can skip installation.
 2. Otherwise install the full plugin for this host using its section below. It includes the Twombly skill, local tools, comment hooks and artwork. Use Node.js 22 or later. Explain any permission prompt or restart the person needs to complete. If a step fails, say which one and why.
-3. Continue in this conversation. If the new tools are available, use them. While a reload or user action is pending, run `npx -y twombly@latest guide` and follow it to put the actual screens on a canvas. Verify the frames, return their canvas address and distinguish a working canvas from a verified native installation.
+3. Use the native tools to open the canvas and add the screens. If the host only loads plugins at session start, tell the person the reload action and give them this continuation: “Open Twombly and put this project's main screens side by side.” Check the frames and return the canvas address.
 
-Install the published files unchanged. If the pinned runtime download fails, keep the original manifest, hooks and version pin. Retry the published version or give the person the exact retry step. A CLI fallback can create a canvas while native setup is pending. Only describe a canvas as online when the tool returns its hosted link.
+Keep the published runtime pin and files intact if a download fails. Only describe a canvas as online when the tool returns its hosted link.
 
 Current Twombly canvases are uploaded privately as they're created, including before sign-in. Add only static frame output safe to leave the machine. Leave link sharing off unless requested.
 
@@ -22,8 +22,12 @@ Run `codex plugin marketplace add https://github.com/materic-inc/plugins.git`, t
 
 Use the whole Cursor plugin from this public repository. Clone `https://github.com/materic-inc/plugins.git` into a new temporary directory. Put a real copy of its `twombly` folder under the user's `~/.cursor/plugins/local/twombly` directory. Include its hidden `.cursor-plugin` folder. Keep an existing installation intact: if the target already exists, inspect its version and source before attempting an update. If this machine already has a working imported Claude plugin, use its native tools directly.
 
-Tell the person to run **Developer: Reload Window**, then open **Customize → Plugins → Twombly**. Check that the tools are enabled. The workspace may require an administrator to allow local imports. If local imports are unavailable, install the project skill using `npx -y skills add materic-inc/plugins --skill twombly --agent cursor -y`, continue with the CLI, and tell the person that only the skill was installed. Avoid changing a team marketplace for a personal installation.
+Tell the person to run **Developer: Reload Window**, then open **Customize → Plugins → Twombly**. Check that the tools are enabled. The workspace may require an administrator to allow local imports. If local imports are unavailable, use the direct MCP setup below if workspace policy permits it. Avoid changing a team marketplace for a personal installation.
 
-## Other agents
+## Hosts with local MCP support
 
-Use the CLI in a local project with a shell. If no local project or shell is available, ask the person to open their project in a local coding agent and paste the same prompt. If installation succeeds but native tools cannot be verified until the next chat, say so.
+Register a local stdio MCP server named `twombly` using the host's supported configuration or install UI. Set the command to `npx` and the arguments to `["-y", "twombly@latest", "mcp"]`. Reload the host if needed. Verify that `open_canvas` is available, then use `add_frames` and `list_frames`. Pass the project's absolute path as `folder` when the host starts the server elsewhere. This provides the local canvas tools; the native plugin also supplies the skill and host-specific comment hooks.
+
+## Shell-only agents
+
+When the host cannot connect to a local MCP server but can run commands in the project, run `npx -y twombly@latest guide` and follow the command-line instructions. If the host has neither local project access nor a shell, ask the person to open the project in a supported local coding agent.
