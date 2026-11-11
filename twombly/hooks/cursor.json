@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeSubmitPrompt": [
+      {
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/hooks/hook.mjs\" context cursor",
+        "timeout": 5
+      }
+    ],
+    "stop": [
+      {
+        "command": "node \"${CURSOR_PLUGIN_ROOT}/hooks/hook.mjs\" followup cursor",
+        "timeout": 5,
+        "loop_limit": null
+      }
+    ]
+  }
+}

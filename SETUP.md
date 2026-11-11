@@ -1,23 +1,27 @@
 # Set up Twombly and make the first canvas
 
-Work in the person's current project. Use the runtime you are actually running in (Claude Code, Cursor, or Codex). If multiple CLIs are installed, their presence alone does not identify your host.
+Work in the person's current project. Use the host you're running in. The presence of several coding-agent CLIs on the machine does not identify the current host.
 
-1. If Twombly’s open_canvas and add_frames tools are already available, use them. Read the Twombly guide first, open one canvas, add the project's main screens, and inspect the result.
-2. Otherwise install the Twombly skill plugin for your host using one of the routes below. This marketplace version provides the skill and uses the published local canvas tool. The same conversation can make a canvas immediately, even when the plugin will only load for future chats.
-3. Run `npx -y twombly@latest guide`, follow its instructions, build the actual screens as static frames and add them. Return the canvas address after verifying the frames. A successful plugin install alone does not finish the task.
+1. Look for Twombly’s native tools. Claude Code may need a tool search for “twombly”. If you have open_canvas and add_frames, read the guide, open a single canvas and use the tools to add the main screens. You can skip installation.
+2. Otherwise install the full plugin for this host using its section below. It includes the Twombly skill, local tools, comment hooks and artwork. Use Node.js 22 or later. Explain any permission prompt or restart the person needs to complete. If a step fails, say which one and why.
+3. Continue in this conversation. If the new tools are available, use them. While a reload or user action is pending, run `npx -y twombly@latest guide` and follow it to put the actual screens on a canvas. Verify the frames, return their canvas address and distinguish a working canvas from a verified native installation.
+
+Current Twombly canvases are uploaded privately as they're created, including before sign-in. Add only static frame output safe to leave the machine. Leave link sharing off unless requested.
 
 ## Claude Code
 
-Run `claude plugin marketplace add https://github.com/materic-inc/plugins.git` and then `claude plugin install twombly@materic`. If the marketplace is already present, continue to install. If the person needs to run an interactive command, give them the corresponding `/plugin marketplace add materic-inc/plugins` or `/plugin install twombly@materic` command. Continue with step 3 in this conversation.
+Run `claude plugin marketplace add https://github.com/materic-inc/plugins.git` followed by `claude plugin install twombly@materic`. If the Materic source is already registered, check that it points at this public repository, then refresh that marketplace before installing. Preserve a developer's differently configured source and explain the name conflict. For an earlier release, use `claude plugin update twombly@materic`. Verify its installed entry using `claude plugin list`. If a reload is needed, tell the person to run `/reload-plugins` or open a fresh project conversation and ask Twombly to open the canvas.
 
 ## Codex and ChatGPT desktop with a local project
 
-Run `codex plugin marketplace add https://github.com/materic-inc/plugins.git` and then `codex plugin add twombly@materic`. If permissions require the person to act, provide the command and its purpose. A new local chat may be needed to see the newly installed plugin. Continue with step 3 now.
+Run `codex plugin marketplace add https://github.com/materic-inc/plugins.git`, then `codex plugin add twombly@materic`. For an existing source, verify the repository, refresh it with `codex plugin marketplace upgrade materic`, then install. Preserve a developer’s differently configured source if its name collides. Verify installation in `codex plugin list`. If the tools haven't loaded, have the person restart the desktop app and open Plugins → Twombly in a local project chat.
 
 ## Cursor
 
-Use the public Twombly skill with `npx -y skills add materic-inc/plugins --skill twombly --agent cursor -y` in this project. Continue with step 3. The official Cursor Marketplace listing is pending publication. Avoid changing a team's marketplace for a personal installation.
+Use the whole Cursor plugin from this public repository. Clone `https://github.com/materic-inc/plugins.git` into a new temporary directory. Put a real copy of its `twombly` folder under the user's `~/.cursor/plugins/local/twombly` directory. Include its hidden `.cursor-plugin` folder. Keep an existing installation intact: if the target already exists, inspect its version and source before attempting an update. If this machine already has a working imported Claude plugin, use its native tools directly.
 
-## Other hosts or missing capabilities
+Tell the person to run **Developer: Reload Window**, then open **Customize → Plugins → Twombly**. Check that the tools are enabled. The workspace may require an administrator to allow local imports. If local imports are unavailable, install the project skill using `npx -y skills add materic-inc/plugins --skill twombly --agent cursor -y`, continue with the CLI, and tell the person that only the skill was installed. Avoid changing a team marketplace for a personal installation.
 
-If you can work in a local project and run Node.js 22 or later, use step 3 directly. If you have no local project or shell, ask the person to open their project in a local coding agent and paste the same prompt. If a download or permission is blocked, describe the exact action needed and carry on with any available local route. Do not publish the canvas or enable comment hooks unless the person asks.
+## Other agents
+
+Use the CLI in a local project with a shell. If no local project or shell is available, ask the person to open their project in a local coding agent and paste the same prompt. If installation succeeds but native tools cannot be verified until the next chat, say so.

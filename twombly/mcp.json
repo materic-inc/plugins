@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "twombly": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "twombly@0.4.17",
+        "mcp"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

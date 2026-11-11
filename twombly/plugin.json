@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "twombly",
-  "version": "0.1.0",
-  "description": "Put working screens and design versions side by side on a Twombly canvas.",
+  "version": "0.4.17",
+  "description": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
   "author": {
     "name": "Materic, Inc.",
     "url": "https://twombly.app"
@@ -17,13 +17,18 @@
   "extensions": {
     "com.openai": {
       "requires_local_executor": true,
+      "hooks": "./hooks/codex.json",
       "interface": {
         "displayName": "Twombly",
         "shortDescription": "Design versions side by side",
-        "longDescription": "Ask your coding agent to build working frames from your project and lay them out side by side on a canvas.",
+        "longDescription": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
         "developerName": "Materic",
         "category": "Design",
-        "capabilities": [],
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
         "websiteURL": "https://twombly.app",
         "privacyPolicyURL": "https://twombly.app/privacy",
         "termsOfServiceURL": "https://twombly.app/terms",
@@ -34,7 +39,7 @@
           "Keep what I tuned on the selected frame."
         ],
         "brandColor": "#0066FF",
-        "composerIcon": "./assets/logo.svg",
+        "composerIcon": "./assets/mark.png",
         "logo": "./assets/logo.png",
         "logoDark": "./assets/logo.png"
       }

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "twombly": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "twombly@0.4.17",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "description": "Comments the person sends to their agent from the Twombly canvas reach it as they are sent.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs\" check claude",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs\" wait claude",
+            "timeout": 3600,
+            "asyncRewake": true
+          }
+        ]
+      }
+    ]
+  }
+}

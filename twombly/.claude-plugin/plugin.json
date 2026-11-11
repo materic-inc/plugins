@@ -1,8 +1,8 @@
 {
   "name": "twombly",
   "displayName": "Twombly",
-  "version": "0.1.0",
-  "description": "Put working screens and design versions side by side on a Twombly canvas.",
+  "version": "0.4.17",
+  "description": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
   "author": {
     "name": "Materic, Inc.",
     "url": "https://twombly.app"
@@ -17,8 +17,11 @@
     "mcp-app",
     "collaboration"
   ],
+  "icon": "./assets/logo.png",
   "privacyPolicyUrl": "https://twombly.app/privacy",
   "termsOfServiceUrl": "https://twombly.app/terms",
   "supportUrl": "https://twombly.app",
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "hooks": "./hooks/claude.json"
 }
