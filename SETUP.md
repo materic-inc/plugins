@@ -16,7 +16,7 @@ Run `codex plugin marketplace add https://github.com/materic-inc/plugins.git` an
 
 ## Cursor
 
-Use the public Twombly skill with `npx -y skills add materic-inc/twombly-skill --skill twombly --agent cursor -y` in this project. Continue with step 3. The official Cursor Marketplace listing is pending publication. Avoid changing a team's marketplace for a personal installation.
+Use the public Twombly skill with `npx -y skills add materic-inc/plugins --skill twombly --agent cursor -y` in this project. Continue with step 3. The official Cursor Marketplace listing is pending publication. Avoid changing a team's marketplace for a personal installation.
 
 ## Other hosts or missing capabilities
 
