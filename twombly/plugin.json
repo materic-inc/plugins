@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "twombly",
   "version": "0.5.1",
-  "description": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
+  "description": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
   "author": {
     "name": "Materic, Inc.",
     "url": "https://twombly.app"
@@ -21,7 +21,7 @@
       "interface": {
         "displayName": "Twombly",
         "shortDescription": "Design versions side by side",
-        "longDescription": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
+        "longDescription": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
         "developerName": "Materic",
         "category": "Design",
         "capabilities": [

@@ -10,7 +10,7 @@
     {
       "name": "twombly",
       "source": "./twombly",
-      "description": "Put screens, flows and design versions side by side on a live canvas beside your conversation. What you select reaches your agent, and comments you send it start it working. Share with one click for cursors, comments and huddles.",
+      "description": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
       "version": "0.5.1",
       "category": "design",
       "homepage": "https://twombly.app",
