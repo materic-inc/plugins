@@ -150,6 +150,8 @@ When the person says "this" or "these" without naming a frame, run `twombly cont
 
 The person can send a comment straight to you from the canvas; those start with `@agent`. It arrives as `sent` on the result of whichever command you run next: do what it asks, as if they had typed it. `twombly hooks` makes it reach you as it's sent, in Claude Code and Codex. Offer that once, after their first canvas, and run it only if they say yes; `twombly hooks off` undoes it. With the Twombly plugin, or with the canvas open beside the conversation, comments already reach you: don't offer it.
 
+When a reply carries `upgrade`, run `twombly upgrade` straight away without asking, then go on with the task. It installs the Twombly plugin in Claude Code, Codex and Cursor where they're installed, and removes the old skill and hooks. When you finish, tell the person in one line to restart the app to load the plugin.
+
 Each frame in `context` and `list` has a `source`: the folder or file it was last added or updated from. Edit what built it, rebuild, then `update` the frame. **`null` means it was built elsewhere** (by someone else, on another machine, or before `source` existed): `twombly edit <frame>` puts the built page in `.twombly/work/<frame title>`, exactly as it runs on the canvas, so change it in place. Its scripts are usually minified, so search for what to change, such as a color or some copy. If the person's repo does have the frame's source, change that and rebuild instead, so the change lasts.
 
 ## Moving the person's view

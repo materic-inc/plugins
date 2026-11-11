@@ -1,7 +1,7 @@
 // Asks Twombly on this machine for comments the person sent to their agent, from `twombly hooks` or the Twombly plugin.
 let mode = process.argv[2] || 'check';
-// Run once by a script, with nobody there: it looks, and never stays.
-if (mode === 'wait' && ['0', 'false'].includes(process.env.CLAUDE_CODE_SESSION_ATTENDED || '')) mode = 'check';
+// A headless Stop checks for newly sent comments once. Selection belongs to prompt submission.
+if (mode === 'wait' && ['0', 'false'].includes(process.env.CLAUDE_CODE_SESSION_ATTENDED || '')) mode = 'continue';
 let input = {};
 if (!process.stdin.isTTY) {
   try { let text = ''; for await (const chunk of process.stdin) text += chunk; input = JSON.parse(text); } catch {}
