@@ -1,0 +1,24 @@
+{
+  "name": "twombly",
+  "displayName": "Twombly",
+  "version": "0.1.0",
+  "description": "Put working screens and design versions side by side on a Twombly canvas.",
+  "author": {
+    "name": "Materic, Inc.",
+    "url": "https://twombly.app"
+  },
+  "license": "MIT",
+  "homepage": "https://twombly.app",
+  "keywords": [
+    "design",
+    "canvas",
+    "prototype",
+    "variations",
+    "mcp-app",
+    "collaboration"
+  ],
+  "privacyPolicyUrl": "https://twombly.app/privacy",
+  "termsOfServiceUrl": "https://twombly.app/terms",
+  "supportUrl": "https://twombly.app",
+  "skills": "./skills/"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "twombly",
+  "version": "0.1.0",
+  "description": "Put working screens and design versions side by side on a Twombly canvas.",
+  "author": {
+    "name": "Materic, Inc."
+  },
+  "homepage": "https://twombly.app",
+  "license": "MIT",
+  "keywords": [
+    "design",
+    "canvas",
+    "prototype",
+    "variations",
+    "collaboration"
+  ],
+  "logo": "assets/logo.svg",
+  "skills": "./skills/"
+}

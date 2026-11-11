@@ -1,0 +1,19 @@
+{
+  "name": "materic",
+  "owner": {
+    "name": "Materic, Inc."
+  },
+  "metadata": {
+    "description": "Plugins from Materic."
+  },
+  "plugins": [
+    {
+      "name": "twombly",
+      "source": "twombly",
+      "description": "Put working screens and design versions side by side on a Twombly canvas.",
+      "version": "0.1.0",
+      "category": "design",
+      "homepage": "https://twombly.app"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "materic",
+  "interface": {
+    "displayName": "Materic"
+  },
+  "plugins": [
+    {
+      "name": "twombly",
+      "source": {
+        "source": "local",
+        "path": "./twombly"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Design"
+    }
+  ]
+}
