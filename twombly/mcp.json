@@ -6,7 +6,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "twombly@0.4.17",
+        "twombly@0.5.0",
         "mcp"
       ],
       "cwd": "${PLUGIN_ROOT}"
