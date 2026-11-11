@@ -1,0 +1,8 @@
+{
+  "name": "twombly-plugin-runtime",
+  "version": "0.5.1",
+  "private": true,
+  "dependencies": {
+    "twombly": "0.5.1"
+  }
+}

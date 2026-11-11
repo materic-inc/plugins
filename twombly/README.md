@@ -32,3 +32,7 @@ In Cursor, follow the [current setup guide](https://twombly.app/install). It cov
 Try: “Put our signup flow on Twombly so I can review every step side by side.”
 
 Canvases live at twombly.app, private to you until you share them. Requires Node.js 22 or later.
+
+## Data and permissions
+
+Twombly reads the project folders you select and uploads static frame files and previews to your private canvas on twombly.app. Sharing is an explicit action. The comment hooks ask the Twombly server on your machine for feedback addressed to your agent. The service uses Google for sign-in, Cloudflare for hosting and huddles, PostHog for usage and error reports, and Resend for invitations. See the [privacy policy](https://twombly.app/privacy) for retention, deletion and how to turn off local usage reporting.

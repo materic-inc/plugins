@@ -6,7 +6,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs\" check claude",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs",
+              "check",
+              "claude"
+            ],
             "timeout": 5
           }
         ]
@@ -17,7 +22,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs\" wait claude",
+            "command": "node",
+            "args": [
+              "${CLAUDE_PLUGIN_ROOT}/hooks/hook.mjs",
+              "wait",
+              "claude"
+            ],
             "timeout": 3600,
             "asyncRewake": true
           }
