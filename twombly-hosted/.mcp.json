@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "twombly": {
+      "type": "http",
+      "url": "https://twombly.app/mcp",
+      "headersHelper": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/feedback.mjs\" headers"
+    }
+  }
+}

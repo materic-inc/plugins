@@ -9,9 +9,9 @@
   "plugins": [
     {
       "name": "twombly",
-      "source": "twombly",
+      "source": "twombly-hosted",
       "description": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
-      "version": "0.5.1",
+      "version": "0.5.2",
       "category": "design",
       "homepage": "https://twombly.app",
       "logo": "https://twombly.app/brand/mark-512.png"
