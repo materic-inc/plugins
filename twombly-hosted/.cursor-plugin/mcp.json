@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "twombly": {
+      "url": "https://twombly.app/mcp",
+      "headers": {
+        "X-Twombly-Editor": "cursor"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "twombly",
+  "version": "0.5.2",
+  "description": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
+  "author": {
+    "name": "Materic, Inc."
+  },
+  "homepage": "https://twombly.app",
+  "license": "MIT",
+  "skills": "./skills/",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "design",
+    "canvas",
+    "collaboration"
+  ],
+  "mcpServers": "./.cursor-plugin/mcp.json",
+  "hooks": "./hooks/cursor.json"
+}

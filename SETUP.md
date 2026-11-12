@@ -20,7 +20,7 @@ Run `codex plugin marketplace add https://github.com/materic-inc/plugins.git`, t
 
 ## Cursor
 
-Use the whole Cursor plugin from this public repository. Clone `https://github.com/materic-inc/plugins.git` into a new temporary directory. Put a real copy of its `twombly` folder under the user's `~/.cursor/plugins/local/twombly` directory. Include its hidden `.cursor-plugin` folder. Keep an existing installation intact: if the target already exists, inspect its version and source before attempting an update. If this machine already has a working imported Claude plugin, use its native tools directly.
+Use the whole Cursor plugin from this public repository. Clone `https://github.com/materic-inc/plugins.git` into a new temporary directory. Put a real copy of its `twombly-hosted` folder under the user's `~/.cursor/plugins/local/twombly` directory. Include its hidden `.cursor-plugin` folder. Keep an existing installation intact: if the target already exists, inspect its version and source before attempting an update. If this machine already has a working imported Claude plugin, use its native tools directly.
 
 Tell the person to run **Developer: Reload Window**, then open **Customize → Plugins → Twombly**. Check that the tools are enabled. The workspace may require an administrator to allow local imports. If local imports are unavailable, use the direct MCP setup below if workspace policy permits it. Avoid changing a team marketplace for a personal installation.
 

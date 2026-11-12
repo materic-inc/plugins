@@ -1,0 +1,111 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "twombly-canvas",
+  "version": "0.5.1",
+  "description": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
+  "author": {
+    "name": "Materic, Inc.",
+    "url": "https://twombly.app"
+  },
+  "license": "MIT",
+  "homepage": "https://twombly.app",
+  "repository": "https://github.com/materic-inc/plugins",
+  "keywords": [
+    "design",
+    "canvas",
+    "prototype"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Twombly",
+        "shortDescription": "Design versions side by side",
+        "longDescription": "Get feedback, huddle, and iterate with your team on a canvas beside your agent.",
+        "developerName": "Materic, Inc.",
+        "category": "Creativity",
+        "capabilities": [
+          "Interactive",
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://twombly.app",
+        "privacyPolicyURL": "https://twombly.app/privacy",
+        "termsOfServiceURL": "https://twombly.app/terms",
+        "supportURL": "https://twombly.app",
+        "defaultPrompt": [
+          "Put our signup flow on Twombly so I can review every step side by side.",
+          "Make three versions of the pricing page and lay them out on a canvas.",
+          "Keep what I tuned on the selected frame."
+        ],
+        "brandColor": "#0066FF",
+        "composerIcon": "./assets/mark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo.png",
+        "composerIconDark": "./assets/mark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Create a private canvas",
+              "prompt": "Create a private online canvas called Field guide.",
+              "tools_triggered": "open_canvas",
+              "expected_behavior": "A new empty canvas is opened. Link sharing stays private.",
+              "file_attachment_urls": [
+                "https://raw.githubusercontent.com/materic-inc/plugins/09b4ec5801cbce76a42f80b802d1f88a2c7ce22a/reviewer/field-guide.zip"
+              ]
+            },
+            {
+              "description": "Compare two screens",
+              "prompt": "Put Explore and Saved side by side as two interactive frames.",
+              "tools_triggered": "add_frames, list_frames",
+              "expected_behavior": "Both named frames appear in a single row."
+            },
+            {
+              "description": "Inspect frames",
+              "prompt": "List the frames on this canvas.",
+              "tools_triggered": "list_frames",
+              "expected_behavior": "Explore and Saved appear with their frame identifiers."
+            },
+            {
+              "description": "Update one version",
+              "prompt": "Change the Explore heading to Coastal walks and update that frame.",
+              "tools_triggered": "update_frame, list_frames",
+              "expected_behavior": "Explore keeps its identifier and position. Saved remains intact."
+            },
+            {
+              "description": "Read feedback",
+              "prompt": "Read the comments on this new canvas.",
+              "tools_triggered": "get_comments",
+              "expected_behavior": "An empty canvas returns no comments. A canvas with feedback returns its threads."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unknown canvas",
+              "prompt": "Open the canvas with ID nonexistentcanvas.",
+              "tools_triggered": "open_canvas",
+              "expected_behavior": "Report that the canvas cannot be opened. Do not create a replacement."
+            },
+            {
+              "description": "Missing frame",
+              "prompt": "Update frame ID nonexistentframe on Field guide with a new index.html containing only a heading.",
+              "tools_triggered": "update_frame",
+              "expected_behavior": "Report that the target does not exist. Leave existing frames intact."
+            },
+            {
+              "description": "Outside the task",
+              "prompt": "Explain what a CSS media query does.",
+              "tools_triggered": "None",
+              "expected_behavior": "Explain the concept without creating or modifying a canvas."
+            }
+          ]
+        },
+        "demo_recording_url": "https://player.mux.com/kE02AfSy9OHOtyANM1FDFoK285RFCE301GP8cTGSRbxrA"
+      },
+      "publication": {
+        "release_notes": "Create a private online canvas, compare frames, and send feedback in chat."
+      }
+    }
+  }
+}
