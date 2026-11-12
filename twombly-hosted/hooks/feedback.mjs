@@ -40,7 +40,7 @@ async function run() {
   if (typeof sessionId !== 'string' || !sessionId) return;
   const session = file('session-' + digest(sessionId));
   if (mode === 'cursor-prepare') {
-    if (!/^(?:MCP:|mcp__twombly__|mcp_twombly_)open_canvas$/i.test(input.tool_name)) return;
+    if (!/^(?:MCP:|mcp__twombly__|mcp_twombly_)open_twombly_canvas$/i.test(input.tool_name)) return;
     const args = typeof input.tool_input === 'string' ? JSON.parse(input.tool_input) : input.tool_input;
     process.stdout.write(JSON.stringify({ permission: 'allow', updated_input: { ...args, nativeFeedbackKey: await makeKey() } }));
     return;
@@ -48,7 +48,7 @@ async function run() {
   if (mode === 'remember' || mode === 'cursor-remember') {
     let result = input.tool_response;
     if (mode === 'cursor-remember') {
-      if (input.mcp_server_name !== 'twombly' || input.tool_name !== 'open_canvas') return;
+      if (input.mcp_server_name !== 'twombly' || input.tool_name !== 'open_twombly_canvas') return;
       const response = JSON.parse(input.result_json);
       if (response.isError) return;
       result = response.structuredContent || JSON.parse(response.content[0].text);
