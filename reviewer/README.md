@@ -4,7 +4,7 @@
 
 Connect Twombly using the [setup instructions](../SETUP.md), then download [Field guide](field-guide.zip), unzip it, and open the Field guide folder in your coding agent. It contains two sample screens. If your hosted app cannot read a local folder, attach both HTML files to the conversation instead.
 
-Hosted connections require Google sign-in. The local runtime requires Node.js 22 or later and a compatible browser, and can create a private canvas before sign-in. Leave link sharing off throughout the walkthrough.
+Complete your host's Twombly connection prompt. Private canvas creation can work before sign-in; Google sign-in is needed to enable sharing. The local runtime requires Node.js 22 or later and a compatible browser. Leave link sharing off throughout the walkthrough.
 
 1. Ask the agent to open a new private Twombly canvas for this project and place Explore and Saved side by side. Both screens should appear in one row.
 2. Click “Save this walk” in Explore. The button should change to “Saved”.
