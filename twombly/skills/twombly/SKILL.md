@@ -13,6 +13,14 @@ Run every command as `npx -y twombly@latest <command>`; this guide shortens that
 
 twombly keeps every canvas in `~/.twombly` and runs a background server on `localhost:4747`. If you run in a sandbox that blocks either, ask the person to let twombly run outside it before you start.
 
+## Hosted MCP
+
+When the Twombly tools take a canvas ID and frame files, use these hosted tools. If the person gives you a Twombly link, open the canvas with the ID from the link. For a new canvas, call `open_canvas` (named `open_twombly_canvas` in the Cursor plugin) once and keep its ID for the conversation. Leave link sharing private until the person asks to share.
+
+For each frame, pass its static files to `add_frames`. Include an entry HTML file and every asset it references. Use distinct titles and the actual design dimensions. Put related frames in the same call. Use files the person supplied or asked you to create. Ask for missing source material when you cannot access it.
+
+Use `list_frames` to find an existing frame's ID. Use `update_frame` to replace its files in place so comments and position survive. Use `get_comments` to read feedback. When the person sends a comment or selects a frame in chat, use that context to identify what they mean.
+
 ## The rule that decides everything
 
 **A frame is a folder of static files that runs with no server and no network.** It can use anything in its own folder and nothing else. The browser enforces this: outside requests, form posts and server code all fail, locally and once shared.
@@ -25,7 +33,7 @@ The person's repo may have a database, an API, auth and environment keys. None o
 - **Saving, exporting and uploading:** anything a button sends to the app's own server, such as Save, Export, Download or a form, fails in a frame, and the checks can only warn about it. Make files in the browser and download them (a `Blob` and an `<a download>` link), keep settings in `localStorage`, and swap uploads and submits for a local result. If `add` warns that a file sends something to its own server, fix it this way.
 - **Analytics and widgets:** remove tag managers, analytics, chat widgets and similar scripts, including any in page templates such as `app.html` or `_document`.
 - **Real customer data:** never copy it from a database, fixture or log. Invent names, emails and numbers. The gates can't detect this, so it's on you. Links are public.
-- **Fonts, images and video:** copy the files into the folder with relative or root paths. For a hosted font such as Google Fonts, download the files and use `@font-face`; Google only serves `woff2` to a browser user agent. If a font is licensed, tell the person it will be publicly hosted. Add up media sizes before downloading, take only what the design shows, and compress video.
+- **Fonts, images and video:** copy the files into the folder with relative or root paths. For a hosted font such as Google Fonts, download the files and use `@font-face`; Google only serves `woff2` to a browser user agent. If a font is licensed, tell the person it will be publicly hosted. Add up media sizes before downloading, take only what the design shows, and compress video. Autoplaying video must be `muted` and `playsinline`, or iPhones won't play it.
 - **One screen of a routed app:** a router reads the page's address, which won't match the screen you want. Write a small entry file that mounts that screen with a memory or hash router, instead of trying to reach its route.
 
 ## Limits
