@@ -11,7 +11,7 @@ Run every command as `npx -y twombly@latest <command>`; this guide shortens that
 
 **If this host provides Twombly's plugin tools:** `open_canvas`, `add_frames`, `update_frames`, `get_context`, `get_comments` and the rest. In Claude Code, load them with a tool search for "twombly". Use them instead of the commands below: each takes the same fields as the command it's named after, and `folder`, the project's absolute path, when you aren't working in it. Start with `open_canvas`, once per conversation: it shows the canvas beside the conversation where the app can, and stays open while you work. Calling it again opens another copy, so don't, and don't open it anywhere else unless its result says to. What the person selects on it reaches you as context, and comments they send you arrive by themselves. Everything below applies the same way. If you installed this skill by itself and those tools are absent, use the command-line guide below.
 
-twombly keeps every canvas in `~/.twombly` and runs a background server on `localhost:4747`. If you run in a sandbox that blocks either, ask the person to let twombly run outside it before you start.
+twombly keeps every canvas in `~/.twombly`, or in a folder it can write to when a sandbox blocks that, and runs a background server on `localhost`. If your sandbox blocks the server, or twombly says it can't write anywhere, ask the person to let twombly run outside it, then run the same command again.
 
 ## Hosted MCP
 
@@ -30,7 +30,7 @@ The person's repo may have a database, an API, auth and environment keys. None o
 - **Data and APIs:** replace with realistic mock data, written inline or as JSON in the folder. For public CMS content, save a snapshot as JSON when you build.
 - **Auth and providers:** skip login, and mount the design with mock providers and a fake signed-in user.
 - **Environment values:** never include them. Build with none set. Don't copy `.env` files. If the build needs a value to compile, use an obviously fake one. **Never run or read a secret manager such as Infisical or Doppler for this, even if the project is set up for it.** If you can't get what you need without one, ask the person.
-- **Saving, exporting and uploading:** anything a button sends to the app's own server, such as Save, Export, Download or a form, fails in a frame, and the checks can only warn about it. Make files in the browser and download them (a `Blob` and an `<a download>` link), keep settings in `localStorage`, and swap uploads and submits for a local result. If `add` warns that a file sends something to its own server, fix it this way.
+- **Saving, exporting and uploading:** anything a button sends to the app's own server, such as Save, Export, Download or a form, fails in a frame, and the checks can only warn about it. Make files in the browser and download them (a `Blob` and an `<a download>` link), keep one viewer's own preferences in `localStorage` (anything everyone on the canvas should see goes in controls; see Live controls), and swap uploads and submits for a local result. If `add` warns that a file sends something to its own server, fix it this way.
 - **Analytics and widgets:** remove tag managers, analytics, chat widgets and similar scripts, including any in page templates such as `app.html` or `_document`.
 - **Real customer data:** never copy it from a database, fixture or log. Invent names, emails and numbers. The gates can't detect this, so it's on you. Links are public.
 - **Fonts, images and video:** copy the files into the folder with relative or root paths. For a hosted font such as Google Fonts, download the files and use `@font-face`; Google only serves `woff2` to a browser user agent. If a font is licensed, tell the person it will be publicly hosted. Add up media sizes before downloading, take only what the design shows, and compress video. Autoplaying video must be `muted` and `playsinline`, or iPhones won't play it.
@@ -116,9 +116,9 @@ Then: `npx vite build --config .twombly/work/composer/vite.config.mjs` and `twom
 
 ## Live controls
 
-When someone wants to tune a frame (sizes, spacing, colour, motion, a sketch's parameters), give it Twombly's controls. They show in a panel beside the canvas when the frame is selected, not on the page, and every move changes everyone's copy of the frame. Never use DialKit, Leva, Tweakpane, lil-gui or a panel drawn on the page.
+When someone wants to tune a frame (sizes, spacing, colour, motion, a sketch's parameters), give it Twombly's controls. They are built on [DialKit](https://github.com/joshpuckett/dialkit) and use its config syntax. They show in the sidebar when the frame is selected, not on the page, and every move changes everyone's copy of the frame. Never draw a controls panel on the page with DialKit's DialRoot, Leva, Tweakpane, lil-gui or dat.GUI; the sidebar is the panel.
 
-Add the file once, in the frame's source: `twombly controls add src/lib`. Then define a named group beside what it tunes, outside any component, with a distinct name per group:
+Add the file once, in the frame's source: `twombly controls add src/lib`. It writes a self-contained file; there is nothing to install. Then define a named group beside what it tunes, outside any component, with a distinct name per group:
 
 ```js
 import {controls} from './lib/twombly-controls.js';
@@ -138,7 +138,9 @@ const sketch = controls('Sketch', {
 });
 ```
 
-`sketch.get()` returns the values, nested as the config is, and stays the same object until one changes. `sketch.subscribe(listener)` hears changes and returns a function that stops it. In React: `const v = useSyncExternalStore(sketch.subscribe, sketch.get, sketch.get)`. In a plain sketch, read `sketch.get()` each frame of the draw loop. Bind every value to something visible, and keep the defaults polished. Outside a canvas nothing shows and the values stay as the code has them. Only the values are shared, never clicks or drags inside the page.
+`sketch.get()` returns the values, nested as the config is, and stays the same object until one changes. `sketch.subscribe(listener)` hears changes and returns a function that stops it. In React: `const v = useSyncExternalStore(sketch.subscribe, sketch.get, sketch.get)`. In a plain sketch, read `sketch.get()` each frame of the draw loop. Bind every value to something visible, and keep the defaults polished. Outside a canvas nothing shows and the values stay as the code has them.
+
+What someone does inside the page stays in their own copy, unless the frame saves it to its controls. When state set inside the page should be kept and shared, such as a camera someone orbits, a pan or a zoom, put it in controls and call `sketch.set({camera: {x, y, z}})` when the person moves it: it takes the shape `get()` returns, and everyone's copy and the sidebar follow. Give such sliders a fine step, such as `[0, -10, 10, 0.001]`, or they round. Call `set()` only for the person's own moves, never every frame of a loop. Never use `localStorage` for anything everyone should see.
 
 Once someone moves a control, that frame in `context` and `list` has `tuned`: what moved, by group and then control path, such as `{"Sketch": {"speed": 4, "motion.enter": {...}}}`. When the person wants to keep what they tuned, write those values into the config as its defaults, rebuild and `update` the frame. On the canvas a tuned value wins over the code until someone presses Reset, so changing that control's default yourself won't show. When `update` returns a `note` about tuned values, tell the person which controls it names and that Reset shows the code's values. Never reset them yourself.
 
