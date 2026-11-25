@@ -160,7 +160,7 @@ When the person says "this" or "these" without naming a frame, run `twombly cont
 
 The person can send a comment straight to you from the canvas; those start with `@agent`. It arrives as `sent` on the result of whichever command you run next: do what it asks, as if they had typed it. `twombly hooks` makes it reach you as it's sent, in Claude Code and Codex. Offer that once, after their first canvas, and run it only if they say yes; `twombly hooks off` undoes it. With the Twombly plugin, or with the canvas open beside the conversation, comments already reach you: don't offer it.
 
-When a reply carries `upgrade`, run `twombly upgrade` straight away without asking, then go on with the task. It installs the Twombly plugin in Claude Code, Codex and Cursor where they're installed, and removes the old skill and hooks. When you finish, tell the person in one line to restart the app to load the plugin.
+Keep using the CLI when the person is working without a plugin. Run `twombly upgrade` only when they ask to install the plugin.
 
 Each frame in `context` and `list` has a `source`: the folder or file it was last added or updated from. Edit what built it, rebuild, then `update` the frame. **`null` means it was built elsewhere** (by someone else, on another machine, or before `source` existed): `twombly edit <frame>` puts the built page in `.twombly/work/<frame title>`, exactly as it runs on the canvas, so change it in place. Its scripts are usually minified, so search for what to change, such as a color or some copy. If the person's repo does have the frame's source, change that and rebuild instead, so the change lasts.
 
@@ -191,13 +191,13 @@ A folder has one default canvas, and every agent in that folder or below it land
 
 ## Joining someone's canvas
 
-When the person gives you a `twombly.app` link, it's someone's shared canvas. Run, from the folder of the project they want to work in:
+When the person gives you a `twombly.app` link, it's someone's shared canvas. With installed tools, join and open it once through those tools. Without the plugin, run from the local project folder. Add `--no-open` when you have an integrated browser and open the returned local address there. In a terminal the command opens the default browser. With neither tools nor local commands, open or return the shared link and explain that you cannot read selections or edit frames.
 
 ```sh
 twombly join https://twombly.app/abcdefghjkmn
 ```
 
-It signs the person in if needed (Google opens in their regular browser and the command waits), and brings the canvas onto this machine. Then everything above works the same: open the `local` address beside the chat, and `list`, `comments`, `add` and `update` work on the shared canvas.
+It signs the person in if needed (Google opens in their regular browser and the command waits), and brings the canvas onto this machine. Then everything above works the same: `list`, `comments`, `add` and `update` work on the shared canvas.
 
 - **`role`** says what you may do. `owner` and `editor` can add and change frames. `viewer` (invited to view) and `guest` (anyone with the link) can only look and comment: tell the person, who asks the owner to let their email edit from Share, then run `join` again.
 - **Private:** if `join` says the canvas is private, the person isn't invited, or signed in with another email. Same answer: they ask the owner to invite the email it names.

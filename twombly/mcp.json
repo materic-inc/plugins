@@ -6,9 +6,12 @@
       "command": "npx",
       "args": [
         "-y",
-        "twombly@0.5.7",
+        "twombly@0.5.9",
         "mcp"
       ],
+      "env": {
+        "TWOMBLY_CLIENT": "openai-app"
+      },
       "cwd": "${PLUGIN_ROOT}"
     }
   }
